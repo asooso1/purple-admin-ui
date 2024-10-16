@@ -3,6 +3,8 @@ import { OAuthUserConfig } from "next-auth/providers";
 import CredentialsProvider, { CredentialsConfig } from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
+import KakaoProvider from "next-auth/providers/kakao";
+import NaverProvider from "next-auth/providers/naver";
 
 const credentialsProviderOption: CredentialsConfig<{}> = {
   type: "credentials",
@@ -38,6 +40,14 @@ const githubProviderOption: OAuthUserConfig<{}> = {
   clientSecret: process.env.GITHUB_CLIENT_SECRET || "",
   profile: (profile: any) => ({ ...profile, image: profile.avatar_url }),
 };
+const naverProviderOption: OAuthUserConfig<{}> = {
+  clientId: process.env.NAVER_CLIENT_ID || "",
+  clientSecret: process.env.NAVER_CLIENT_SECRET || "",
+};
+const kakaoProviderOption: OAuthUserConfig<{}> = {
+  clientId: process.env.KAKAO_CLIENT_ID || "",
+  clientSecret: process.env.KAKAO_CLIENT_SECRET || "",
+};
 
 export default NextAuth({
   pages: {
@@ -49,6 +59,8 @@ export default NextAuth({
     CredentialsProvider(credentialsProviderOption),
     GoogleProvider(googleProviderOption),
     GithubProvider(githubProviderOption),
+    NaverProvider(naverProviderOption),
+    KakaoProvider(kakaoProviderOption),
   ],
   callbacks: {
     jwt({ token, user }) {

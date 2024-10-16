@@ -55,7 +55,7 @@ const LoginForm = () => {
             ></path>
           </svg>
         </a>
-        <a className="flex items-center justify-center h-20 grow btn" onClick={() => signIn("github")}>
+        <a className="flex items-center justify-center h-20 grow btn" onClick={() => signIn("kakao")}>
           <svg width="28" height="28" viewBox="0 0 98 96" xmlns="http://www.w3.org/2000/svg">
             <path
               fillRule="evenodd"
